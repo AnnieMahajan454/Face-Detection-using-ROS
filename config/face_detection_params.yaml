@@ -1,0 +1,44 @@
+# Face Detection Parameters Configuration
+
+# Camera Settings
+camera:
+  index: 0                    # Camera device index (0 for default camera)
+  frame_rate: 30.0           # Frames per second
+  image_width: 640           # Image width in pixels
+  image_height: 480          # Image height in pixels
+
+# Face Detection Settings
+face_detection:
+  # Haar Cascade Parameters
+  scale_factor: 1.1          # How much the image size is reduced at each scale
+  min_neighbors: 5           # How many neighbors each candidate rectangle should have to retain it
+  min_size: [30, 30]         # Minimum possible object size, smaller objects are ignored [width, height]
+  max_size: [300, 300]       # Maximum possible object size [width, height]
+  
+  # Alternative cascade classifiers (uncomment to use)
+  # cascade_path: "haarcascade_frontalface_alt.xml"
+  # cascade_path: "haarcascade_frontalface_alt2.xml"
+  # cascade_path: "haarcascade_profileface.xml"
+
+# Visualization Settings
+visualization:
+  display_original: true      # Display original camera feed
+  display_annotated: true     # Display annotated feed with face detection
+  window_name_original: "Original Camera"
+  window_name_annotated: "Face Detection Results"
+  save_detections: false      # Automatically save detected faces
+  
+# Performance Settings
+performance:
+  max_fps: 30.0              # Maximum processing frame rate
+  skip_frames: 0             # Number of frames to skip between detections (0 = process all)
+  
+# Logging Settings
+logging:
+  log_detections: true       # Log face detection events
+  log_level: "INFO"          # ROS log level (DEBUG, INFO, WARN, ERROR)
+  
+# Advanced Settings
+advanced:
+  use_threading: false       # Use threading for image processing
+  buffer_size: 1             # Image buffer size for subscribers
