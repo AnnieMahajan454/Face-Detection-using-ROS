@@ -1,0 +1,17 @@
+# Python requirements for Face Detection ROS Package
+
+# Core dependencies
+opencv-python>=4.5.0
+numpy>=1.19.0
+
+# Optional dependencies for enhanced functionality
+# matplotlib>=3.3.0  # For additional visualization capabilities
+# Pillow>=8.0.0      # For image processing utilities
+# scipy>=1.5.0       # For advanced image processing
+
+# Note: ROS dependencies should be installed via apt:
+# sudo apt-get install ros-$ROS_DISTRO-cv-bridge
+# sudo apt-get install ros-$ROS_DISTRO-image-transport
+# sudo apt-get install ros-$ROS_DISTRO-sensor-msgs
+# sudo apt-get install ros-$ROS_DISTRO-std-msgs
+# sudo apt-get install ros-$ROS_DISTRO-geometry-msgs
