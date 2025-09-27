@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Camera Node Only -->
+  
+  <!-- Camera Node -->
+  <node name="camera_node" pkg="face_detection_pkg" type="camera_node.py" output="screen">
+    <param name="camera_index" value="0" />
+    <param name="frame_rate" value="30.0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+  </node>
+  
+</launch>

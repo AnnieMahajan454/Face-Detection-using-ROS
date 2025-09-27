@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Face Detection using ROS -->
+  
+  <!-- Parameters -->
+  <rosparam file="$(find face_detection_pkg)/config/face_detection_params.yaml" command="load" />
+  
+  <!-- Camera Node -->
+  <node name="camera_node" pkg="face_detection_pkg" type="camera_node.py" output="screen">
+    <param name="camera_index" value="0" />
+    <param name="frame_rate" value="30.0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+  </node>
+  
+  <!-- Face Detection Node -->
+  <node name="face_detector_node" pkg="face_detection_pkg" type="face_detector_node.py" output="screen">
+    <param name="scale_factor" value="1.1" />
+    <param name="min_neighbors" value="5" />
+    <param name="min_size" value="[30, 30]" />
+    <param name="max_size" value="[300, 300]" />
+  </node>
+  
+  <!-- Face Visualizer Node -->
+  <node name="face_visualizer_node" pkg="face_detection_pkg" type="face_visualizer_node.py" output="screen">
+    <param name="display_original" value="true" />
+    <param name="display_annotated" value="true" />
+    <param name="window_name_original" value="Original Camera" />
+    <param name="window_name_annotated" value="Face Detection Results" />
+  </node>
+  
+</launch>
