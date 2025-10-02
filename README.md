@@ -43,11 +43,11 @@ face_detection_pkg/
 
 #### ROS Packages
 ```bash
-sudo apt-get install ros-$ROS_DISTRO-cv-bridge
-sudo apt-get install ros-$ROS_DISTRO-image-transport
-sudo apt-get install ros-$ROS_DISTRO-sensor-msgs
-sudo apt-get install ros-$ROS_DISTRO-std-msgs
-sudo apt-get install ros-$ROS_DISTRO-geometry-msgs
+sudo apt-get install ros-$ROS_NOETIC-cv-bridge
+sudo apt-get install ros-$ROS_NOETIC-image-transport
+sudo apt-get install ros-$ROS_NOETIC-sensor-msgs
+sudo apt-get install ros-$ROS_NOETIC-std-msgs
+sudo apt-get install ros-$ROS_NOETIC-geometry-msgs
 ```
 
 #### Python Packages
