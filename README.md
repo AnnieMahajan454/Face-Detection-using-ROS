@@ -270,22 +270,6 @@ Modify the `cascade_path` parameter in the configuration or launch files.
 4. Test thoroughly
 5. Submit a pull request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- OpenCV community for computer vision libraries
-- ROS community for the robotics framework
-- Contributors and maintainers of related packages
-
-## Contact
-
-- Author: Annie Mahajan
-- GitHub: https://github.com/AnnieMahajan454/Face-Detection-using-ROS
-- Issues: https://github.com/AnnieMahajan454/Face-Detection-using-ROS/issues
-
 ## Version History
 
 - **v1.0.0**: Initial release with basic face detection functionality
