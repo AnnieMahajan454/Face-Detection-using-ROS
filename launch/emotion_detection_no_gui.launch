@@ -1,0 +1,34 @@
+<!-- 
+Emotion Detection Without GUI Launch File
+This launch file starts the emotion detection system without the GUI,
+suitable for integration with Gazebo or other simulation environments.
+-->
+
+<launch>
+    <!-- Face detection parameters -->
+    <arg name="scale_factor" default="1.1" />
+    <arg name="min_neighbors" default="5" />
+    
+    <!-- Emotion detection parameters -->
+    <arg name="detection_interval" default="1.0" />
+    
+    <!-- Image topic - can be remapped to Gazebo camera -->
+    <arg name="image_topic" default="/camera/image_raw" />
+    
+    <!-- Face Detection Node -->
+    <node pkg="face_detection_pkg" type="face_detector_node.py" name="face_detector_node" output="screen">
+        <param name="scale_factor" value="$(arg scale_factor)" />
+        <param name="min_neighbors" value="$(arg min_neighbors)" />
+        <remap from="/camera/image_raw" to="$(arg image_topic)" />
+    </node>
+    
+    <!-- Emotion Detection Node -->
+    <node pkg="face_detection_pkg" type="emotion_detector_node.py" name="emotion_detector_node" output="screen">
+        <param name="detection_interval" value="$(arg detection_interval)" />
+        <remap from="/camera/image_raw" to="$(arg image_topic)" />
+    </node>
+    
+    <!-- Mood Chatbot Node -->
+    <node pkg="face_detection_pkg" type="mood_chatbot_node.py" name="mood_chatbot_node" output="screen" />
+    
+</launch>

@@ -1,0 +1,50 @@
+<!-- 
+Emotion Detection System Launch File
+This launch file starts the complete emotion detection system:
+- Camera node
+- Face detection node
+- Emotion detection node
+- Mood chatbot node
+- GUI node
+-->
+
+<launch>
+    <!-- Camera parameters -->
+    <arg name="camera_index" default="0" />
+    <arg name="frame_rate" default="30.0" />
+    <arg name="image_width" default="640" />
+    <arg name="image_height" default="480" />
+    
+    <!-- Face detection parameters -->
+    <arg name="scale_factor" default="1.1" />
+    <arg name="min_neighbors" default="5" />
+    
+    <!-- Emotion detection parameters -->
+    <arg name="detection_interval" default="1.0" />
+    
+    <!-- Camera Node -->
+    <node pkg="face_detection_pkg" type="camera_node.py" name="camera_node" output="screen">
+        <param name="camera_index" value="$(arg camera_index)" />
+        <param name="frame_rate" value="$(arg frame_rate)" />
+        <param name="image_width" value="$(arg image_width)" />
+        <param name="image_height" value="$(arg image_height)" />
+    </node>
+    
+    <!-- Face Detection Node -->
+    <node pkg="face_detection_pkg" type="face_detector_node.py" name="face_detector_node" output="screen">
+        <param name="scale_factor" value="$(arg scale_factor)" />
+        <param name="min_neighbors" value="$(arg min_neighbors)" />
+    </node>
+    
+    <!-- Emotion Detection Node -->
+    <node pkg="face_detection_pkg" type="emotion_detector_node.py" name="emotion_detector_node" output="screen">
+        <param name="detection_interval" value="$(arg detection_interval)" />
+    </node>
+    
+    <!-- Mood Chatbot Node -->
+    <node pkg="face_detection_pkg" type="mood_chatbot_node.py" name="mood_chatbot_node" output="screen" />
+    
+    <!-- GUI Node -->
+    <node pkg="face_detection_pkg" type="emotion_gui_node.py" name="emotion_gui_node" output="screen" required="true" />
+    
+</launch>

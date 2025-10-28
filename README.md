@@ -5,12 +5,15 @@ A comprehensive ROS package for real-time face detection using OpenCV and Haar c
 ## Features
 
 - **Real-time face detection** using OpenCV Haar cascades
+- **Emotion detection** with 7 emotion categories using DeepFace
+- **Mood-based chatbot** with personalized recommendations
 - **ROS-based architecture** with modular nodes
-- **Live visualization** with annotated video feed
+- **Live visualization** with annotated video feed and GUI
 - **Configurable parameters** via YAML files and ROS parameters
 - **Multiple launch configurations** for different use cases
 - **Face position data publishing** for integration with other systems
 - **Image saving capabilities** for detected faces and original frames
+- **Gazebo simulation support** for emotion detection
 
 ## Package Structure
 
@@ -22,13 +25,20 @@ face_detection_pkg/
 ├── scripts/                    # Python nodes
 │   ├── face_detector_node.py   # Main face detection node
 │   ├── camera_node.py          # Camera capture node
-│   └── face_visualizer_node.py # Visualization node
+│   ├── face_visualizer_node.py # Visualization node
+│   ├── emotion_detector_node.py # Emotion detection node
+│   ├── mood_chatbot_node.py    # Mood-based chatbot node
+│   └── emotion_gui_node.py     # Emotion detection GUI node
 ├── launch/                     # Launch files
 │   ├── face_detection.launch   # Complete system launch
 │   ├── camera_only.launch      # Camera node only
-│   └── detection_only.launch   # Detection without visualization
-└── config/                     # Configuration files
-    └── face_detection_params.yaml # Parameters configuration
+│   ├── detection_only.launch   # Detection without visualization
+│   ├── emotion_system.launch   # Emotion detection with GUI
+│   └── emotion_detection_no_gui.launch # Emotion detection without GUI
+├── config/                     # Configuration files
+│   └── face_detection_params.yaml # Parameters configuration
+├── test_emotion_standalone.py  # Standalone emotion detection test
+└── EMOTION_DETECTION_README.md # Emotion detection documentation
 ```
 
 ## Prerequisites
@@ -124,6 +134,18 @@ roslaunch face_detection_pkg detection_only.launch
 ```
 Starts camera and detection nodes without visualization (headless mode).
 
+#### 4. Emotion Detection System
+```bash
+roslaunch face_detection_pkg emotion_system.launch
+```
+Launches complete emotion detection system with face detection, emotion analysis, mood chatbot, and GUI.
+
+#### 5. Emotion Detection without GUI
+```bash
+roslaunch face_detection_pkg emotion_detection_no_gui.launch
+```
+Starts emotion detection without GUI (suitable for Gazebo integration or headless systems).
+
 ### Manual Node Execution
 
 You can also run nodes individually:
@@ -185,11 +207,17 @@ Edit `config/face_detection_params.yaml` to modify default parameters.
 - `/camera/image_raw` (sensor_msgs/Image): Raw camera images
 - `/face_detection/annotated_image` (sensor_msgs/Image): Images with face detection annotations
 - `/face_detection/face_positions` (std_msgs/Int32MultiArray): Face position data [x1, y1, w1, h1, x2, y2, w2, h2, ...]
+- `/emotion_detection/emotions` (std_msgs/String): JSON string with detected emotions
+- `/emotion_detection/annotated_image` (sensor_msgs/Image): Video with emotion labels
+- `/chatbot/recommendations` (std_msgs/String): JSON string with mood-based recommendations
 
 ### Subscribed Topics
 
 - Face detection node subscribes to `/camera/image_raw`
 - Visualization node subscribes to `/camera/image_raw`, `/face_detection/annotated_image`, and `/face_detection/face_positions`
+- Emotion detection node subscribes to `/camera/image_raw` and `/face_detection/face_positions`
+- Mood chatbot node subscribes to `/emotion_detection/emotions`
+- Emotion GUI node subscribes to `/camera/image_raw`, `/emotion_detection/annotated_image`, and `/chatbot/recommendations`
 
 ## Interactive Controls
 
@@ -270,7 +298,49 @@ Modify the `cascade_path` parameter in the configuration or launch files.
 4. Test thoroughly
 5. Submit a pull request
 
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- OpenCV community for computer vision libraries
+- ROS community for the robotics framework
+- Contributors and maintainers of related packages
+
+## Emotion Detection & Mood Chatbot
+
+The package includes an advanced emotion detection system with mood-based recommendations. For detailed information, see [EMOTION_DETECTION_README.md](EMOTION_DETECTION_README.md).
+
+### Quick Start for Emotion Detection
+
+```bash
+# Install additional dependencies
+pip install -r requirements.txt
+
+# Launch the emotion detection system
+roslaunch face_detection_pkg emotion_system.launch
+```
+
+The emotion detection system provides:
+- Detection of 7 emotions: happy, sad, angry, fear, surprise, disgust, neutral
+- Real-time mood-based recommendations through an interactive chatbot
+- Side-by-side GUI with live video and chatbot interface
+- Compatible with Gazebo simulations and real cameras
+
+## Contact
+
+- Author: Annie Mahajan
+- GitHub: https://github.com/AnnieMahajan454/Face-Detection-using-ROS
+- Issues: https://github.com/AnnieMahajan454/Face-Detection-using-ROS/issues
 ## Version History
+
+- **v2.0.0**: Emotion detection and mood chatbot system
+  - Real-time emotion detection using DeepFace
+  - Mood-based chatbot with personalized recommendations
+  - Interactive GUI with video and chatbot display
+  - Gazebo simulation support
+  - Enhanced ROS topic structure
 
 - **v1.0.0**: Initial release with basic face detection functionality
   - Real-time face detection using Haar cascades
