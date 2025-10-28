@@ -290,24 +290,6 @@ OpenCV provides several Haar cascade classifiers:
 
 Modify the `cascade_path` parameter in the configuration or launch files.
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- OpenCV community for computer vision libraries
-- ROS community for the robotics framework
-- Contributors and maintainers of related packages
-
 ## Emotion Detection & Mood Chatbot
 
 The package includes an advanced emotion detection system with mood-based recommendations. For detailed information, see [EMOTION_DETECTION_README.md](EMOTION_DETECTION_README.md).
