@@ -310,11 +310,7 @@ The emotion detection system provides:
 - Side-by-side GUI with live video and chatbot interface
 - Compatible with Gazebo simulations and real cameras
 
-## Contact
 
-- Author: Annie Mahajan
-- GitHub: https://github.com/AnnieMahajan454/Face-Detection-using-ROS
-- Issues: https://github.com/AnnieMahajan454/Face-Detection-using-ROS/issues
 ## Version History
 
 - **v2.0.0**: Emotion detection and mood chatbot system
